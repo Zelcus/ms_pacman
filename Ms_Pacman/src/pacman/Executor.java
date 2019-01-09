@@ -10,20 +10,8 @@ import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.Random;
 
-import dataRecording.DataCollectorController;
 import pacman.controllers.Controller;
 import pacman.controllers.HumanController;
-import pacman.controllers.KeyBoardInput;
-import pacman.controllers.examples.AggressiveGhosts;
-import pacman.controllers.examples.Legacy;
-import pacman.controllers.examples.Legacy2TheReckoning;
-import pacman.controllers.examples.NearestPillPacMan;
-import pacman.controllers.examples.NearestPillPacManVS;
-import pacman.controllers.examples.RandomGhosts;
-import pacman.controllers.examples.RandomNonRevPacMan;
-import pacman.controllers.examples.RandomPacMan;
-import pacman.controllers.examples.StarterGhosts;
-import pacman.controllers.examples.StarterPacMan;
 import pacman.game.Game;
 import pacman.game.GameView;
 
@@ -45,8 +33,10 @@ public class Executor
 	 */
 	public static void main(String[] args)
 	{
-		Executor exec=new Executor();
+		//Executor exec=new Executor();
 
+
+		TreeBuilder b = new TreeBuilder();
 
 		//run multiple games in batch mode - good for testing.
 		int numTrials=10;
@@ -85,7 +75,7 @@ public class Executor
 		 */
 
 		//run game for data collection
-		exec.runGameTimed(new DataCollectorController(new KeyBoardInput()),new StarterGhosts(),visual);
+		//exec.runGameTimed(new RandomPacmanController(),new StarterGhosts(),visual);
 	}
 	
     /**
