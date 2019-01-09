@@ -5,26 +5,12 @@ import pacman.game.Constants.MOVE;
 
 public class DataPoint
 {
-    public enum isGhostWeak
-    {
-        Far,Semi,Close,Low,Medium,High;
-    }
-    public enum powerPills
-    {
-       None,Some,Many;
-    }
-    public enum closestGhost
-    {
-        Blinky,Inky,Pinky,Sue;
-    }
-
-
     //Attribute 1-4
-    public  isGhostWeak Blinky,Inky,Pinky,Sue;
+    public  AttributeList.isGhostWeak Blinky,Inky,Pinky,Sue;
     //Attribute 5
-    public  powerPills Pills;
+    public  AttributeList.powerPills Pills;
     //Attribute 6
-    public  closestGhost closestG;
+    public  AttributeList.closestGhost closestG;
 
     public int possibleAttributeValues[];
 
@@ -64,136 +50,136 @@ public class DataPoint
 
     private void ProcessGhost(DataTuple Tuple)
     {
-        closestG = closestGhost.Blinky;
+        closestG =  AttributeList.closestGhost.Blinky;
         int closest = Tuple.blinkyDist;
 
         if(Tuple.pinkyDist <closest)
         {
             closest = Tuple.pinkyDist;
-            closestG = closestGhost.Pinky;
+            closestG =  AttributeList.closestGhost.Pinky;
         }
         if(Tuple.inkyDist <closest)
         {
             closest = Tuple.inkyDist;
-            closestG = closestGhost.Inky;
+            closestG =  AttributeList.closestGhost.Inky;
         }
         if(Tuple.sueDist <closest)
         {
             closest = Tuple.sueDist;
-            closestG = closestGhost.Sue;
+            closestG =  AttributeList.closestGhost.Sue;
         }
 
         if(Tuple.isBlinkyEdible)
         {
             if(Tuple.blinkyDist <close)
-                Blinky = isGhostWeak.High;
+                Blinky = AttributeList.isGhostWeak.High;
             else if(Tuple.blinkyDist < medium)
             {
-                Blinky = isGhostWeak.Medium;
+                Blinky = AttributeList.isGhostWeak.Medium;
             }
             else {
-                Blinky = isGhostWeak.Low;
+                Blinky = AttributeList.isGhostWeak.Low;
             }
         }
         else
         {
             if(Tuple.blinkyDist <close)
-                Blinky = isGhostWeak.Close;
+                Blinky = AttributeList.isGhostWeak.Close;
             else if(Tuple.blinkyDist < medium)
             {
-                Blinky = isGhostWeak.Semi;
+                Blinky = AttributeList.isGhostWeak.Semi;
             }
             else {
-                Blinky = isGhostWeak.Far;
+                Blinky = AttributeList.isGhostWeak.Far;
             }
         }
         if(Tuple.isInkyEdible)
         {
             if(Tuple.inkyDist <close)
-                Inky = isGhostWeak.High;
+                Inky = AttributeList.isGhostWeak.High;
             else if(Tuple.blinkyDist < medium)
             {
-                Inky = isGhostWeak.Medium;
+                Inky = AttributeList.isGhostWeak.Medium;
             }
             else
             {
-                Inky = isGhostWeak.Low;
+                Inky = AttributeList.isGhostWeak.Low;
             }
         }
         else
         {
             if(Tuple.inkyDist <close)
-                Inky = isGhostWeak.Close;
+                Inky = AttributeList.isGhostWeak.Close;
             else if(Tuple.blinkyDist < medium)
             {
-                Inky = isGhostWeak.Semi;
+                Inky = AttributeList.isGhostWeak.Semi;
             }
             else
             {
-                Inky = isGhostWeak.Far;
+                Inky = AttributeList.isGhostWeak.Far;
             }
         }
         if(Tuple.isPinkyEdible)
         {
             if(Tuple.pinkyDist <close)
-                Pinky = isGhostWeak.High;
+                Pinky = AttributeList.isGhostWeak.High;
             else if(Tuple.blinkyDist < medium)
             {
-                Pinky = isGhostWeak.Medium;
+                Pinky = AttributeList.isGhostWeak.Medium;
             }
             else
             {
-                Pinky = isGhostWeak.Low;
+                Pinky = AttributeList.isGhostWeak.Low;
             }
         }
         else
         {
             if(Tuple.pinkyDist <close)
-                Pinky = isGhostWeak.Close;
+                Pinky = AttributeList.isGhostWeak.Close;
             else if(Tuple.blinkyDist < medium)
             {
-                Pinky = isGhostWeak.Semi;
+                Pinky = AttributeList.isGhostWeak.Semi;
             }
             else
             {
-                Pinky = isGhostWeak.Far;
+                Pinky = AttributeList.isGhostWeak.Far;
             }
         }
         if(Tuple.isSueEdible) {
             if (Tuple.sueDist < close)
-                Sue = isGhostWeak.High;
+                Sue = AttributeList.isGhostWeak.High;
             else if (Tuple.blinkyDist < medium) {
-                Sue = isGhostWeak.Medium;
+                Sue = AttributeList.isGhostWeak.Medium;
             } else {
-                Sue = isGhostWeak.Low;
+                Sue = AttributeList.isGhostWeak.Low;
             }
         }
         else
         {
             if (Tuple.sueDist < close)
-                Sue = isGhostWeak.Close;
+                Sue = AttributeList.isGhostWeak.Close;
             else if (Tuple.blinkyDist < medium) {
-                Sue = isGhostWeak.Semi;
+                Sue = AttributeList.isGhostWeak.Semi;
             } else {
-                Sue = isGhostWeak.Far;
+                Sue = AttributeList.isGhostWeak.Far;
             }
         }
     }
     private void ProcessPowerPills(DataTuple Tuple)
     {
         if(Tuple.numOfPowerPillsLeft > Tuple.numberOfTotalPowerPillsInLevel/2)
-            Pills = powerPills.Many;
+            Pills = AttributeList.powerPills.Many;
         else if(Tuple.numOfPowerPillsLeft > 0)
-            Pills = powerPills.Some;
+            Pills = AttributeList.powerPills.Some;
         else
-            Pills = powerPills.None;
+            Pills = AttributeList.powerPills.None;
     }
 
     public boolean CheckAttribute(int i,int j)
     {
         if(i ==0)
         {
-            if(Blinky == isGhostWeak.values()[j])
+            if(Blinky == AttributeList.isGhostWeak.values()[j])
             {
                 return  true;
             }
@@ -202,7 +188,7 @@ public class DataPoint
         }
         else if(i ==1)
         {
-            if(Inky == isGhostWeak.values()[j])
+            if(Inky == AttributeList.isGhostWeak.values()[j])
             {
                 return  true;
             }
@@ -211,7 +197,7 @@ public class DataPoint
         }
         else if(i ==2)
         {
-            if(Pinky == isGhostWeak.values()[j])
+            if(Pinky == AttributeList.isGhostWeak.values()[j])
             {
                 return  true;
             }
@@ -220,7 +206,7 @@ public class DataPoint
         }
         else  if(i ==3)
         {
-            if(Sue == isGhostWeak.values()[j])
+            if(Sue == AttributeList.isGhostWeak.values()[j])
             {
                 return  true;
             }
@@ -229,7 +215,7 @@ public class DataPoint
         }
         else if(i ==4)
         {
-            if(Pills == powerPills.values()[j])
+            if(Pills == AttributeList.powerPills.values()[j])
             {
                 return  true;
             }
@@ -238,7 +224,7 @@ public class DataPoint
         }
         else if(i ==5)
         {
-            if(closestG == closestGhost.values()[j])
+            if(closestG == AttributeList.closestGhost.values()[j])
             {
                 return  true;
             }

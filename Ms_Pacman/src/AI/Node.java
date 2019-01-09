@@ -7,7 +7,11 @@ import java.util.ArrayList;
 public class Node
 {
     public Constants.MOVE move;
-    public int attribute;
+
+    public  AttributeList.isGhostWeak Blinky,Inky,Pinky,Sue;
+    public  AttributeList.powerPills Pills;
+    public  AttributeList.closestGhost closestG;
+
     public int numberOfChildren;
     public ArrayList<Node> children;
 
@@ -26,9 +30,7 @@ public class Node
 
     public void PrintAll()
     {
-        System.out.println("I am attribute " + attribute);
         System.out.println("I have move " + move);
-
         for(int i=0;i<numberOfChildren;i++)
             children.get(i).PrintAll();
     }
