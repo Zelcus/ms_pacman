@@ -10,7 +10,10 @@ import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.Random;
 
+import AI.DataPoint;
 import dataRecording.DataCollectorController;
+import dataRecording.DataSaverLoader;
+import dataRecording.DataTuple;
 import pacman.controllers.Controller;
 import pacman.controllers.HumanController;
 import pacman.controllers.KeyBoardInput;
@@ -24,6 +27,7 @@ import pacman.controllers.examples.RandomNonRevPacMan;
 import pacman.controllers.examples.RandomPacMan;
 import pacman.controllers.examples.StarterGhosts;
 import pacman.controllers.examples.StarterPacMan;
+import pacman.entries.pacman.MTreePacMan;
 import pacman.game.Game;
 import pacman.game.GameView;
 
@@ -85,7 +89,19 @@ public class Executor
 		 */
 
 		//run game for data collection
-		exec.runGameTimed(new DataCollectorController(new KeyBoardInput()),new StarterGhosts(),visual);
+		//exec.runGameTimed(new MTreePacMan(),new StarterGhosts(),visual);
+
+		DataTuple[] data;
+		data = DataSaverLoader.LoadPacManData();
+
+		DataPoint[] dataPoint = new DataPoint[data.length];
+
+
+		for(int i=0;i <data.length;i++)
+		{
+			dataPoint[i] = new DataPoint(data[i]);
+			dataPoint[i].Print();
+		}
 	}
 
 	/**
